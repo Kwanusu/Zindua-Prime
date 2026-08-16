@@ -1,0 +1,6 @@
+[
+  { "id": 1, "name": "Mechanical Keyboard", "price": 120 },
+  { "id": 2, "name": "Wireless Mouse", "price": 50 },
+  { "id": 3, "name": "4K Monitor", "price": 350 },
+  { "id": 4, "name": "USB-C Dock", "price": 90 }
+]
