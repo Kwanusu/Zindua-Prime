@@ -14,6 +14,7 @@ import {
 import { useUser } from "../context/UserContext";
 import { useTheme } from "../context/ThemeContext";
 import { Link } from "react-router-dom";
+import ZinduaLogo from "../components/ZinduaLogo";
 
 export default function Navbar() {
   const { user, isAuthenticated, isAdmin, logout } = useUser();
@@ -29,7 +30,7 @@ export default function Navbar() {
           to="/" 
           className="text-xl font-bold tracking-tight text-gray-900 transition-colors dark:text-white"
         >
-          Zindua<span className="text-indigo-600 dark:text-indigo-400">Prime</span>
+          <ZinduaLogo variant="full" />
         </Link>
 
         {/* Mobile Menu Toggle */}
@@ -66,6 +67,14 @@ export default function Navbar() {
                 className="block rounded-md px-3 py-2 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-800 dark:hover:text-white md:p-0 md:hover:bg-transparent dark:md:hover:bg-transparent"
               >
                 Contact
+              </Link>
+            </li>
+            <li>
+              <Link 
+                to="/products" 
+                className="block rounded-md px-3 py-2 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-800 dark:hover:text-white md:p-0 md:hover:bg-transparent dark:md:hover:bg-transparent"
+              >
+                Products
               </Link>
             </li>
 

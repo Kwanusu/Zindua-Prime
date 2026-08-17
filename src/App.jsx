@@ -17,6 +17,7 @@ import { AuthProvider } from "./context/AuhContext";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import CookieSettings from "./pages/CookieSettings";
+import ProductManager from "./pages/ProductManager";
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
               <Route path="/about" element={<About /> }/>
               <Route path="/contact" element={<Contact /> }/>
               <Route path="/blog" element={<Blogs /> }/>
+              <Route path="/products" element={<ProductManager /> }/>
               <Route path="/blog/:id" element={<BlogPostDetail /> }/>
               <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="/terms" element={<TermsOfService />} />
