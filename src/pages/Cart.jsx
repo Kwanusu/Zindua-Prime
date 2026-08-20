@@ -15,6 +15,7 @@ import {
   ArrowLeft,
   CreditCard,
 } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export const Cart = () => {
   const dispatch = useDispatch();
@@ -87,7 +88,7 @@ export const Cart = () => {
             </p>
           </div>
 
-          <button
+          <Button
             type="button"
             disabled={loading}
             onClick={() => dispatch(clearCart())}
@@ -95,7 +96,7 @@ export const Cart = () => {
           >
             <Trash2 className="h-4 w-4" />
             Clear Cart
-          </button>
+          </Button>
 
         </div>
 
@@ -285,14 +286,14 @@ export const Cart = () => {
             </div>
 
             {/* Checkout */}
-            <button
-              type="button"
+            <Link
+              to="/checkout"
               disabled={loading}
               className="mt-6 flex w-full items-center justify-center gap-2 rounded-lg bg-indigo-600 px-4 py-3 font-semibold text-white transition hover:bg-indigo-700 disabled:cursor-not-allowed disabled:opacity-50"
             >
               <CreditCard className="h-5 w-5" />
               Proceed to Checkout
-            </button>
+            </Link>
 
             {/* Continue shopping */}
             <Link

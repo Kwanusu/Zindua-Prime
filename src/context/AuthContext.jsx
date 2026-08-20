@@ -182,6 +182,10 @@ export function AuthProvider({ children }) {
 
   const isSuperAdmin = user?.role === "Super Admin";
 
+  const isAdmin =
+  user?.role === "Admin" ||
+  user?.role === "Super Admin";
+
   return (
     <AuthContext.Provider
       value={{
@@ -193,6 +197,7 @@ export function AuthProvider({ children }) {
         updateUser,
         hasRole,
         isSuperAdmin,
+        isAdmin,
         isAuthenticated: !!user,
         loading
       }}

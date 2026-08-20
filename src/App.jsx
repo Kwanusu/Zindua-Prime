@@ -1,6 +1,5 @@
 import LoginForm from "./pages/LoginForm";
 import Home from "./pages/Home";
-import { UserProvider } from "./context/UserContext";
 import { ThemeProvider } from "./context/ThemeContext";
 import { Routes, Route, Navigate } from "react-router-dom";
 import RegisterForm from "./pages/Register";
@@ -18,16 +17,16 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import CookieSettings from "./pages/CookieSettings";
 import ProductManager from "./pages/ProductManager";
-import Products from "./pages/Products";
-import { AxiosFetch } from "./pages/AxiosFetch";
 import CharacterList from "./components/Characters";
+import Products from "./pages/Products";
+import { Cart } from "./pages/Cart";
+import CheckoutPage from "./pages/Checkout";
 
 function App() {
 
   return (
     <>
     <ThemeProvider>
-      <UserProvider>
         <AuthProvider>
           <Routes>  
             
@@ -38,9 +37,10 @@ function App() {
               <Route path="/about" element={<About /> }/>
               <Route path="/contact" element={<Contact /> }/>
               <Route path="/blog" element={<Blogs /> }/>
-              <Route path="/product" element={<AxiosFetch /> }/>
+              <Route path="/cart" element={<Cart /> }/>
+              <Route path="/products" element={<Products /> }/>
               <Route path="/character" element={<CharacterList /> }/>
-              <Route path="/products" element={<ProductManager /> }/>
+              <Route path="/checkout" element={<CheckoutPage /> }/>
               <Route path="/blog/:id" element={<BlogPostDetail /> }/>
               <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="/terms" element={<TermsOfService />} />
@@ -60,7 +60,7 @@ function App() {
                 <Route
                   path="/settings"
                   element={
-                    <ProtectedRoute allowedRoles={["Super Admin", "Editor", "Viewer"]}>
+                    <ProtectedRoute allowedRoles={["Super Admin", "Admin", "Editor", "Viewer"]}>
                       <Settings />
                     </ProtectedRoute>
                   }
@@ -77,10 +77,9 @@ function App() {
                 />
 
                 {/* Fallback */}
-                <Route path="*" element={<Navigate to="/settings" replace />} />
+                <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
          </AuthProvider>
-      </UserProvider>
     </ThemeProvider>
     </>
   );

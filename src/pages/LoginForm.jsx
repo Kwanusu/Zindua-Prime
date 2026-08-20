@@ -1,14 +1,26 @@
 import { useState } from "react";
-import { useNavigate, useLocation, Link } from "react-router-dom";
-import { AlertCircle, ArrowRight, CheckCircle2, Loader2, Lock, Mail, ShieldCheck, Zap } from "lucide-react";
+
+import { useNavigate, Link } from "react-router-dom";
+
+import {
+  AlertCircle,
+  ArrowRight,
+  CheckCircle2,
+  Loader2,
+  Lock,
+  Mail,
+  ShieldCheck,
+  Zap,
+} from "lucide-react";
+
 import InputField from "../InputField";
 import { useAuth } from "../context/AuthContext";
 import ZinduaLogo from "../components/ZinduaLogo";
 
 function LoginForm() {
   const { login, loginWithGoogle } = useAuth();
+
   const navigate = useNavigate();
-  const location = useLocation();
 
   const [isLoading, setIsLoading] = useState(false);
   const [isSocialLoading, setIsSocialLoading] = useState(false);
@@ -22,17 +34,20 @@ function LoginForm() {
 
   const [error, setError] = useState({});
 
-  const redirectPath = location.state?.from?.pathname || "/admin";
-
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
+
     setFormData((prev) => ({
       ...prev,
       [name]: type === "checkbox" ? checked : value,
     }));
 
     if (error[name] || error.form) {
-      setError((prev) => ({ ...prev, [name]: null, form: null }));
+      setError((prev) => ({
+        ...prev,
+        [name]: null,
+        form: null,
+      }));
     }
   };
 
@@ -50,32 +65,59 @@ function LoginForm() {
     }
 
     setError(newError);
+
     return Object.keys(newError).length === 0;
   };
 
+  // ===============================
+  // EMAIL LOGIN
+  // ===============================
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (!validate()) return;
 
     setIsLoading(true);
+    setError({});
 
     try {
-      const result = await login(formData.email, formData.password);
+      const result = await login(
+        formData.email.trim(),
+        formData.password
+      );
 
       if (result.success) {
         setIsSuccess(true);
-        setTimeout(() => {
-          navigate(redirectPath, { replace: true });
-        }, 1200);
-      } else {
-        setError({ form: result.message || "Invalid email or password" });
+
+        // Always go to home page after login
+        navigate("/", {
+          replace: true,
+        });
+
+        return;
       }
+
+      setError({
+        form:
+          result.message ||
+          "Invalid email or password",
+      });
     } catch (err) {
-      setError({ form: "An unexpected error occurred. Please try again." });
+      console.error("Login error:", err);
+
+      setError({
+        form:
+          "An unexpected error occurred. Please try again.",
+      });
     } finally {
       setIsLoading(false);
     }
   };
+
+  // ===============================
+  // GOOGLE LOGIN
+  // ===============================
 
   const handleGoogleAuth = async () => {
     setIsSocialLoading(true);
@@ -86,14 +128,27 @@ function LoginForm() {
 
       if (result.success) {
         setIsSuccess(true);
-        setTimeout(() => {
-          navigate(redirectPath, { replace: true });
-        }, 1200);
-      } else {
-        setError({ form: result.message || "Google Sign-In failed" });
+
+        // Always go to home page after Google login
+        navigate("/", {
+          replace: true,
+        });
+
+        return;
       }
+
+      setError({
+        form:
+          result.message ||
+          "Google Sign-In failed",
+      });
     } catch (err) {
-      setError({ form: "An unexpected error occurred during Google Auth." });
+      console.error("Google authentication error:", err);
+
+      setError({
+        form:
+          "An unexpected error occurred during Google Auth.",
+      });
     } finally {
       setIsSocialLoading(false);
     }
