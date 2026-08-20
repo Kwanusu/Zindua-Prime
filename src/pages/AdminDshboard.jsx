@@ -15,7 +15,7 @@ import {
   Sliders,
   UserPlus
 } from "lucide-react";
-import { useAuth } from "../context/AuhContext";
+import { useAuth } from "../context/AuthContext";
 
 export default function AdminDashboard() {
   const { user, logout } = useAuth();

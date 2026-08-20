@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { X, UserPlus, Shield, CheckCircle } from "lucide-react";
-import { useAuth } from "../context/AuhContext";
+import { useAuth } from "../context/AuthContext";
 
 export default function AddAdminModal({ isOpen, onClose }) {
   const { addAdmin } = useAuth();

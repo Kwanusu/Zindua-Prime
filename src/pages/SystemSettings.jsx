@@ -14,7 +14,7 @@ import {
   Copy, 
  
 } from "lucide-react";
-import { useAuth } from "../context/AuhContext";
+import { useAuth } from "../context/AuthContext";
 
 export default function Settings() {
   const { user } = useAuth();

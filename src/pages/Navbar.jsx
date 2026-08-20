@@ -63,6 +63,14 @@ export default function Navbar() {
             </li>
             <li>
               <Link 
+                to="/cart" 
+                className="block rounded-md px-3 py-2 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-800 dark:hover:text-white md:p-0 md:hover:bg-transparent dark:md:hover:bg-transparent"
+              >
+                Cart
+              </Link>
+            </li>
+            <li>
+              <Link 
                 to="/contact" 
                 className="block rounded-md px-3 py-2 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-800 dark:hover:text-white md:p-0 md:hover:bg-transparent dark:md:hover:bg-transparent"
               >
@@ -75,6 +83,14 @@ export default function Navbar() {
                 className="block rounded-md px-3 py-2 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-800 dark:hover:text-white md:p-0 md:hover:bg-transparent dark:md:hover:bg-transparent"
               >
                 Products
+              </Link>
+            </li>
+            <li>
+              <Link 
+                to="/character" 
+                className="block rounded-md px-3 py-2 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-800 dark:hover:text-white md:p-0 md:hover:bg-transparent dark:md:hover:bg-transparent"
+              >
+                Characters
               </Link>
             </li>
 

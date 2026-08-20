@@ -13,11 +13,14 @@ import AdminDashboard from "./pages/AdminDshboard";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Settings from "./pages/Settings";
 import SystemSettings from "./pages/SystemSettings"
-import { AuthProvider } from "./context/AuhContext";
+import { AuthProvider } from "./context/AuthContext";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import CookieSettings from "./pages/CookieSettings";
 import ProductManager from "./pages/ProductManager";
+import Products from "./pages/Products";
+import { AxiosFetch } from "./pages/AxiosFetch";
+import CharacterList from "./components/Characters";
 
 function App() {
 
@@ -27,6 +30,7 @@ function App() {
       <UserProvider>
         <AuthProvider>
           <Routes>  
+            
             <Route element={<Layout />}>
               <Route path="/" element={<Home />}/>
               <Route path="/login" element={<LoginForm /> }/>
@@ -34,6 +38,8 @@ function App() {
               <Route path="/about" element={<About /> }/>
               <Route path="/contact" element={<Contact /> }/>
               <Route path="/blog" element={<Blogs /> }/>
+              <Route path="/product" element={<AxiosFetch /> }/>
+              <Route path="/character" element={<CharacterList /> }/>
               <Route path="/products" element={<ProductManager /> }/>
               <Route path="/blog/:id" element={<BlogPostDetail /> }/>
               <Route path="/privacy" element={<PrivacyPolicy />} />
